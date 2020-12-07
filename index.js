@@ -1,5 +1,7 @@
 const fs = require("fs");
 var path = require("path");
+var FormData = require("form-data");
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 var args = process.argv.slice(2);
 
@@ -26,4 +28,31 @@ function checkDir(loc) {
 
 checkDir(location);
 
+let file =
+  allPossibleFiles[Math.floor(Math.random() * allPossibleFiles.length)];
 console.log(allPossibleFiles);
+console.log(file);
+
+upload(file);
+
+function upload(file) {
+  var formData = new FormData();
+  var xhr = new XMLHttpRequest();
+
+  console.log("this is the file: " + fs.createReadStream(file));
+  formData.append("theFile", fs.createReadStream(file));
+
+  xhr.onreadystatechange = function () {
+    console.log(this.status);
+    console.log("reps." + this.responseText);
+    var jsonobj = JSON.parse(this.responseText);
+    if (this.status == 200) {
+      console.log("https://uploads.marksism.space" + jsonobj.link);
+    } else {
+      console.log("Något gick fel");
+    }
+  };
+
+  xhr.open("POST", "https://uploads.marksism.space/");
+  xhr.send(formData);
+}

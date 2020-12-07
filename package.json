@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/superfroggman/random-backup/issues"
   },
-  "homepage": "https://github.com/superfroggman/random-backup#readme"
+  "homepage": "https://github.com/superfroggman/random-backup#readme",
+  "dependencies": {
+    "form-data": "^3.0.0",
+    "xmlhttprequest": "^1.8.0"
+  }
 }
