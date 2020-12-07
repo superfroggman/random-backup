@@ -7,9 +7,23 @@ console.log(args);
 
 var location = args[0];
 
-const dirs = fs.readdirSync(location);
+var allPossibleFiles = [];
 
-dirs.forEach(dir => {
-    console.log(location + "/" + dir)
-});
+function checkDir(loc) {
+  //console.log(loc);
+  var dirs = fs.readdirSync(loc);
+  dirs.forEach((dir) => {
+    var path = loc + "/" + dir;
+    //console.log(path);
+    //console.log(fs.lstatSync(path).isDirectory());
+    if (fs.lstatSync(path).isDirectory()) {
+      checkDir(path);
+    } else {
+      allPossibleFiles.push(path);
+    }
+  });
+}
 
+checkDir(location);
+
+console.log(allPossibleFiles);
