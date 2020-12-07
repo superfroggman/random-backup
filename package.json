@@ -1,0 +1,20 @@
+{
+  "name": "random-backup",
+  "version": "1.0.0",
+  "description": "backs up a random file on your computer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superfroggman/random-backup.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/superfroggman/random-backup/issues"
+  },
+  "homepage": "https://github.com/superfroggman/random-backup#readme"
+}
